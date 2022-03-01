@@ -1,22 +1,29 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 <body>
 <form method="post">
   {% csrf_token %}
-    <span>Введите ссылку для сокращения:</span><br>
+  <span>Введите ссылку для сокращения:</span><br>
+
   {{ form.full_link }}<br><br>
+
   <button type="submit" class="btn btn-success">Получить ссылку</button><br><br>
-    {% if slug %}
-        <span>Ваша короткая ссылка:</span><br>
-        {{ request.get_host }}/{{ slug }}
-    {% endif %}
+
+  {% if slug %}
+    <span>Ваша короткая ссылка:</span><br>
+    <a href="{% url 'link_for_redirect' link_slug=slug %}">{{ request.get_host }}/{{ slug }}</a>
+  {% endif %}
+
+  {{ url }}
+
+  <span>{{ error }}</span><br>
 </form>
 </body>
 </html>

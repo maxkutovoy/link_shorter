@@ -10,4 +10,3 @@ class Link(models.Model):
         unique=True,
         db_index=True,
     )
-
