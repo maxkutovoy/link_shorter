@@ -12,7 +12,11 @@
   {% csrf_token %}
     <span>Введите ссылку для сокращения:</span><br>
   {{ form.full_link }}<br><br>
-  <button type="submit" class="btn btn-success">Получить ссылку</button>
+  <button type="submit" class="btn btn-success">Получить ссылку</button><br><br>
+    {% if slug %}
+        <span>Ваша короткая ссылка:</span><br>
+        {{ request.get_host }}/{{ slug }}
+    {% endif %}
 </form>
 </body>
 </html>
