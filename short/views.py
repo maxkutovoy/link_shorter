@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.crypto import get_random_string
 
 from .models import Link
-from .forms import LincForm
+from .forms import LinkForm
 
 
 def get_random_slug():
@@ -16,7 +16,7 @@ def index(request):
     slug = ''
     error = ''
     if request.method == 'POST':
-        form = LincForm(request.POST)
+        form = LinkForm(request.POST)
         if form.is_valid():
             url = request.POST['full_link']
             link = Link.objects.filter(full_link=url)
@@ -28,7 +28,7 @@ def index(request):
         else:
             error = 'Неверный URL'
 
-    form = LincForm()
+    form = LinkForm()
 
     data = {
         'form': form,

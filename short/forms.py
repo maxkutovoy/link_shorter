@@ -3,7 +3,7 @@ from django.forms import ModelForm, TextInput
 from .models import Link
 
 
-class LincForm(ModelForm):
+class LinkForm(ModelForm):
     class Meta:
         model = Link
         fields = ['full_link']
