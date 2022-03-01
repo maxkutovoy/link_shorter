@@ -11,8 +11,9 @@
 <form method="post">
   {% csrf_token %}
   <span>Введите ссылку для сокращения:</span><br>
-
   {{ form.full_link }}<br><br>
+  <span>Укажите желаемое имя короткой ссылки (допускаются только латинские символы, цифры, подчеркивание и тире) (необязательно):</span><br>
+  {{ form.slug }}<br><br>
 
   <button type="submit" class="btn btn-success">Получить ссылку</button><br><br>
 
@@ -20,8 +21,6 @@
     <span>Ваша короткая ссылка:</span><br>
     <a href="{% url 'link_for_redirect' link_slug=slug %}">{{ request.get_host }}/{{ slug }}</a>
   {% endif %}
-
-  {{ url }}
 
   <span>{{ error }}</span><br>
 </form>

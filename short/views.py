@@ -21,7 +21,7 @@ def index(request):
             url = request.POST['full_link']
             link = Link.objects.filter(full_link=url)
             if not link:
-                slug = get_random_slug()
+                slug = request.POST['slug'] or get_random_slug()
                 Link.objects.create(full_link=url, slug=slug)
             else:
                 slug = link.last().slug
@@ -39,7 +39,5 @@ def index(request):
 
 
 def short_url_redirect(request, link_slug):
-
     link = get_object_or_404(Link, slug=link_slug)
-
     return redirect(link.full_link)
