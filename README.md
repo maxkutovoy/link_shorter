@@ -18,6 +18,12 @@ pip install -r requirements.txt
 ## Как использовать:
 
 ### Запустить тестовый сервер:
+Установить миграции выполнив команды:
+```sh
+python manage.py makemigrations
+
+python manage.py migrate
+```
 
 Запустить тестовый сервер командой:
 
