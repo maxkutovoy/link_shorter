@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+from environs import Env
 from pathlib import Path
+
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,13 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#14j2%@4+e(19sns1qk8m^@)thr$9a(^f3$r*)0c!$*3n5krxe'
+SECRET_KEY = env.str('SECRET_KEY', 'REPLACE_ME')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', True)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', [])
 
 # Application definition
 
