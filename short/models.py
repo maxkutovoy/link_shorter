@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 # Create your models here.
@@ -7,6 +8,7 @@ class Link(models.Model):
     slug = models.SlugField(
         "Slug короткой ссылки",
         max_length=100,
+        default=uuid.uuid4(),
         unique=True,
         db_index=True,
     )

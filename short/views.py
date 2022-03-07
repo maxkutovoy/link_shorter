@@ -1,3 +1,4 @@
+import uuid
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.crypto import get_random_string
 
@@ -6,10 +7,7 @@ from .forms import LinkForm
 
 
 def get_random_slug():
-    while True:
-        random_slug = get_random_string(length=6)
-        if not Link.objects.filter(slug=random_slug):
-            return random_slug
+    return uuid.uuid4()
 
 
 def index(request):
